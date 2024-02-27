@@ -1,0 +1,19 @@
+*.pyc
+htmlcov
+.coverage
+coverage.xml
+.high_load_dev.env
+node_modules
+ui/tests/coverage
+venv
+
+.DS_Store
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.idea

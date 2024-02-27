@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  high_load_dev:
+    container_name: high_load_dev
+    build:
+      context: .
+    working_dir: /extension
+    command: cextrun -d --no-rich-logging
+    volumes: 
+      - .:/extension
+    env_file:
+      - .high_load_dev.env
+
+  high_load_bash:
+    container_name: high_load_bash
+    build:
+      context: .
+    working_dir: /extension
+    command: /bin/bash
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/extension
+    env_file:
+      - .high_load_dev.env
+
+  high_load_test:
+    container_name: high_load_test
+    build:
+      context: .
+    working_dir: /extension
+    command: extension-test
+    volumes:
+      - .:/extension
+    env_file:
+      - .high_load_dev.env
