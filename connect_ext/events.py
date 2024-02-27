@@ -3,6 +3,8 @@
 # Copyright (c) 2024, Globex Corporation
 # All rights reserved.
 #
+import asyncio
+
 from connect.eaas.core.decorators import (
     event,
 )
@@ -141,7 +143,9 @@ class HighLoadEventsApplication(EventsApplicationBase):
 
     @event('product_custom_event_processing')
     async def handle_product_custom_event_processing(self, request):
-        self.logger.info(f"Obtained request with id {request['id']}")
+        self.logger.info(request)
+        import asyncio
+        await asyncio.sleep(request['body']['time'])
         return InteractiveResponse.done(
             http_status=200,
             headers={'X-Custom-Header': 'value'},
